@@ -1,0 +1,12 @@
+<h1>TeachingHands</h1>
+<h3>生徒詳細</h3>
+<div class="student">
+  <p> <%= @student.student_name %></p>
+  <p><%= @student.sex %></p>
+  <p><%= @student.grade %></p>
+  <p><%= @student.subject %></p>
+  <p><%= @student.created_at %></p>
+</div>
+
+<%= link_to "生徒一覧に戻る", students_path %>
+<%= link_to "編集する", edit_student_path(@student.id) %>

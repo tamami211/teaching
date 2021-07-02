@@ -1,0 +1,24 @@
+<h1>TeachingHands</h1>
+<h3>生徒一覧</h3>
+<h3>投稿を検索</h3>
+ <%= form_tag({controller:"students",action:"index"}, method: :get) do %>
+   <%= text_field_tag :search %>
+   <%= submit_tag '検索する'  %>
+<% end %>
+
+<%= link_to "新規生徒投稿へ", new_student_path %>
+
+<div class="students-container">
+  <% @students.each do |t| %>
+    <div class="student">
+      <%= t.student_name %>
+      <%= t.sex %>
+      <%= t.grade %>
+      <%= t.subject %>
+      <%= t.user.email %>
+      <%= link_to "詳細へ", student_path(t.id) %>
+      <%= link_to "編集する", edit_student_path(t.id) %>
+      <%= button_to "削除する", student_path(t.id), method: :delete %>
+    </div>
+  <% end %>
+</div>

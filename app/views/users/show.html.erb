@@ -1,0 +1,35 @@
+<!DOCTYPE html> <!--　この文章がHTML文章であることを伝える要素です。-->
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="myshow.css">
+  </head>
+  <body>
+<h1>マイページ</h1>
+<div class=profilepage>
+<div class="profile__name">名前 : <%= @user.name %></div>
+<div class="profile__desc">プロフィール : <%= @user.profile %></div>
+
+<% if current_user.id == @user.id %>
+  <%= link_to "編集する", edit_user_registration_path %>
+<% end %>
+</div>
+
+<div class=userindex>
+<% @user.students.each do |t| %>
+    <%= t.student_name %>
+    <%= t.sex %>
+    <%= t.grade %>
+    <%= t.subject %>
+<% end %>
+</div>
+
+<!-- 以下はいいね機能を実装している場合-->
+<h2>ユーザーがいいねした投稿一覧</h2>
+<% @user.liked_students.each do |t| %>
+    <%= t.student_name %>
+    <%= t.sex %>
+    <%= t.grade %>
+    <%= t.subject %>
+<% end %>
+<!-- ここまで-->

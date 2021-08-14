@@ -13,3 +13,53 @@
  *= require_tree .
  *= require_self
  */
+ * {
+    padding: 0;
+    margin: 0;
+  }
+  body {
+    font-family: "Mukta Malar";
+  }
+  header {
+    background-color: #F2D121;
+    height: 70px;
+    font-weight: semibold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header a {
+    color: white; 
+    text-decoration: none; 
+  }
+  a:hover {
+    color: rgb(75, 173, 253);
+  }
+
+  header h1 {
+    color: white;
+    margin-left: 20px;
+  }
+  .header-list {
+    display: flex;
+    align-items: center;
+  }
+  header ul {
+    display: flex;
+  }
+  header li {
+    list-style: none;
+    margin-right: 20px;
+  }
+  
+
+  footer {
+    color: white;
+    height: 30px;
+    background-color: #E5B402;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }

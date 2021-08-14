@@ -5,19 +5,37 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
-    <% if user_signed_in? %>
-    <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-  <% else %>
-    <li><%= link_to "新規登録", new_user_registration_path %></li>
-    <li><%= link_to "ログイン", new_user_session_path %></li>
-  <% end %>
-
+  
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+
   </head>
 
   <body>
+    <header>
+    <h1>TeachingHands</h1>
+    <div class="header-list">
+    <ul>
+      <% if user_signed_in? %>
+      <li><%= link_to "マイページへ", user_path(current_user.id) %></li>　
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "新規登録", new_user_registration_path %></li>
+        <li><%= link_to "ログイン", new_user_session_path %></li>
+      <% end %>
+      <li><%= link_to "生徒一覧へ", students_path %></li>
+      <li><%= link_to 'TOP/気づき一覧へ', tweets_path %></li>
+      </ul>
+      </header>
+
+      <main>
     <%= yield %>
+    </main>
+    <footer>
+    <p>Copyright © 2021 TeachingHands All Rights Reserved.</p>
+   </footer>
   </body>
 </html>

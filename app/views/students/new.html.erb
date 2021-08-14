@@ -1,22 +1,35 @@
-<h1>TeachingHands</h1>
+<!DOCTYPE html> <!--　この文章がHTML文章であることを伝える要素です。-->
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="seitonew.css">
+  </head>
+  <newbody>
+
+  <div class="title-container">
 <h3>新規生徒</h3>
+</div>
+
 <%= form_for @student do |f| %>
- <div class="field">
-    <%= f.label :student_name %>
+ <div class="field-new">
+    <%= f.label :生徒の名前 %>
     <%= f.select :student_name, 
     [["タロウ", "タロウ"], 
     ["ハナコ", "ハナコ"], 
     ["ハルオ", "ハルオ"],
     ["ナツコ", "ナツコ"]], include_blank: "選択して下さい" %>
+
+    個人情報の特定を避けるため名前をここから選んでください
   </div>
 
-  <div class="field">
- 　 <%= f.label :sex %>
+
+  <div class="field-new">
+ 　 <%= f.label :性別 %>
  　 <%= f.radio_button :sex, "男" %>男 <%= f.radio_button :sex, "女" %>女
   </div>
 
-  <div class="field">
-    <%= f.label :grade %>
+  <div class="field-new">
+    <%= f.label :学年 %>
     <%= f.select :grade, 
     [["小学生", "小学生"], 
     ["中学1年生", "中学1年生"], 
@@ -28,8 +41,8 @@
     ["浪人生", "浪人生"]], include_blank: "選択して下さい" %>
   </div>
 
-  <div class="field">
-    <%= f.label :subject %>
+  <div class="field-new">
+    <%= f.label :科目 %>
     <%= f.select :subject, 
     [["国語", "国語"], 
     ["算数", "算数"], 
@@ -56,7 +69,17 @@
     ["政治・経済", "政治・経済"],
     ["その他", "その他"]], include_blank: "選択して下さい" %>
   </div>
+
+  <div class="field-new">
+  <%= f.label :イメージ画像 %>
+  <%= f.file_field :image %>
+  <br>自分の生徒を区別するためイメージ画像も選択してください（本人の写真など個人が特定されるものは避けてください）
+</div>
+
   <%= f.submit "生徒を投稿する" %>
 <% end %>
 
 <%= link_to "生徒一覧に戻る", students_path %>
+
+</newbody>
+</html>

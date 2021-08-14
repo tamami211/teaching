@@ -1,11 +1,11 @@
 class StudentsController < ApplicationController
-    before_action :authenticate_user!, only: [:new, :create]
+    before_action :authenticate_user!, only: [:new, :create, :index, :show]
     def index
       if params[:search] != nil && params[:search] != ''
         search = params[:search]
-        @students = Student.where("student_name LIKE ? OR sex LIKE ? OR subject LIKE ? OR grade LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")    
+        @students = Student.where("student_name LIKE ? OR sex LIKE ? OR subject LIKE ? OR grade LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%") .page(params[:page]).per(6)   
       else
-        @students= Student.all
+        @students= Student.all.page(params[:page]).per(6)
     end
   end
   
@@ -25,6 +25,9 @@ class StudentsController < ApplicationController
 
       def show
         @student = Student.find(params[:id])
+        @comments = @student.comments
+        @comment = Comment.new
+        
       end
 
       def edit
@@ -48,6 +51,6 @@ class StudentsController < ApplicationController
 
     private
     def student_params
-      params.require(:student).permit(:student_name, :sex, :grade, :subject)
+      params.require(:student).permit(:student_name, :sex, :grade, :subject, :image)
     end
 end

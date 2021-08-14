@@ -1,24 +1,68 @@
-<h1>TeachingHands</h1>
-<h3>生徒一覧</h3>
-<h3>投稿を検索</h3>
+<!DOCTYPE html> <!--　この文章がHTML文章であることを伝える要素です。-->
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="seitoindex.css">
+  </head>
+  <seitobody>
+  <div class="title-container">
+<h5>生徒一覧</h5>
+</div>
+
+<h4>投稿を検索</h4>
  <%= form_tag({controller:"students",action:"index"}, method: :get) do %>
    <%= text_field_tag :search %>
    <%= submit_tag '検索する'  %>
 <% end %>
 
-<%= link_to "新規生徒投稿へ", new_student_path %>
+<%= link_to "新しい生徒の追加はこちらから", new_student_path %>
+
+<br>
+<%= page_entries_info @students %>
 
 <div class="students-container">
   <% @students.each do |t| %>
     <div class="student">
-      <%= t.student_name %>
-      <%= t.sex %>
-      <%= t.grade %>
-      <%= t.subject %>
-      <%= t.user.email %>
+    <%= image_tag t.image_url, size: "250x200" if t.image? %>
+    <ul class="sample">
+    <li><%= t.student_name %></li>
+    <li><%= t.sex %></li>
+    <li><%= t.grade %></li>
+    <li><%= t.subject %></li>
+    </ul>
+
+    <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>　
+  
+  <ul>
+ <% if user_signed_in? %>
+      <% if current_user.already_liked?(t) %>
+          <%= link_to student_like_path(id: t.id, student_id: t.id), method: :delete do %>
+            <i class="fas fa-heart"></i><%= t.likes.count %>   
+          <% end %>
+      <% else %>
+          <%= link_to student_likes_path(id: t.id, student_id: t.id), method: :post do %>
+            <i class="far fa-heart"></i><%= t.likes.count %>
+          <% end %>
+      <% end %>
+  <% else %>
+  <i class="far fa-heart"></i><%= t.likes.count %>
+  <% end %>
+</ul>
+
+
+  <% if user_signed_in? %>
+<%= link_to "マイページへ", user_path(current_user.id) %>　
+<% end %>
+      
       <%= link_to "詳細へ", student_path(t.id) %>
+<br>
       <%= link_to "編集する", edit_student_path(t.id) %>
-      <%= button_to "削除する", student_path(t.id), method: :delete %>
+<br>
+      <%= link_to "削除する", student_path(t.id), method: :delete %>
     </div>
   <% end %>
 </div>
+<%= paginate @students %>
+
+</seitobody>
+</html>

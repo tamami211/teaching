@@ -1,0 +1,14 @@
+<%= stylesheet_link_tag 'new', :media => "all" %>
+<div class="post-container">
+
+<p class="title">新たな気づき</p>
+<%= form_for(@tweet, :url => { controller:'tweets', action:'create'})do |f| %>
+  <div class="field">
+    <%= f.label :投稿内容 %>
+    <br>
+    <%= f.text_field :trick, :size => 140 %>
+    <br> 
+  <%= f.submit "気づきを共有する" %>
+<% end %>
+</div>
+<%= link_to "気づき一覧に戻る", tweets_path %>

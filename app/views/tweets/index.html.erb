@@ -1,0 +1,96 @@
+<!DOCTYPE html> <!--　この文章がHTML文章であることを伝える要素です。-->
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+  <section id="first-block">
+  <div class="title-container">
+      <h1>生徒とともに成長するあなたへ</h1>
+    </div>
+  </section>
+
+  <section id="second-block">
+<h3>気づき一覧</h3>
+<%= link_to "気づきの新規投稿はここから", new_tweet_path %>
+<br>
+<%= page_entries_info @tweets %>
+
+<div class="tweets-container">
+  <% @tweets.each do |t| %>
+    <div class="tweet">
+      <%= t.trick %>
+      
+      <%= link_to "詳細へ", tweet_path(t.id) %>
+
+      <% if user_signed_in? && current_user.id == t.user_id %>  
+    　<%= link_to "編集する", edit_tweet_path(t.id) %>
+    　<%= link_to "削除する", tweet_path(t.id), method: :delete %>
+    　<% end %> 　
+    </div>
+  <% end %>
+
+  <%= paginate @tweets %>
+
+  </div>
+
+  <div class="content-title">
+  あなたの経験や知識を塾講師のみんなで共有しよう
+  </div>
+
+</section>
+
+<section id="third-block">
+<p class="thanks-title">
+いつも頑張る塾講師のみなさん
+<br>
+お疲れ様です
+</p>
+<div class="thank-container">
+  <div class="thank">
+  <image src="images/thank1.jpg" class="thank-image">
+
+          <br>
+          <br>
+「成績を上げたい」<br>
+「志望校に合格したい」<br>
+<br>
+そんな思いの生徒とともに一歩ずつ<br>
+前に進み続けるみなさん<br>
+<br>
+そのなかで<br>
+あなたがしていることは<br>
+教材を渡すだけ？<br>
+解き方を教えるだけ？
+
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="fourth-block">
+  <p class="encouragements-title">
+  あなたはきっとたくさん考えてる
+</p>
+<div class="encourage-container">
+  <div class="encouragement">
+  <image src="images/encouragement1.jpg" class="encouragement-image">
+
+          <br>
+          <br>
+「あれ、疲れてる　何かあったのかな」<br>
+「この子への声の掛け方は工夫してみよう」<br>
+<br>
+当たり前かもしれないけど<br>
+そんなあなたの少しの気遣いが信頼関係を作って<br>
+学ぶことの楽しさに生徒が気づく
+
+        </p>
+      </div>
+    </div>
+
+  </section>
+  </body>
+</html>

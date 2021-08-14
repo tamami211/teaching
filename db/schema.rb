@@ -10,15 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_02_071942) do
+ActiveRecord::Schema.define(version: 2021_07_29_084801) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "quizscore"
-    t.integer "grade"
+    t.integer "test"
     t.datetime "courseday"
+    t.integer "user_id", null: false
+    t.integer "student_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_comments_on_student_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "student_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_likes_on_student_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -26,6 +39,14 @@ ActiveRecord::Schema.define(version: 2021_07_02_071942) do
     t.string "subject"
     t.string "sex"
     t.string "grade"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.string "image"
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.string "trick"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
@@ -39,8 +60,14 @@ ActiveRecord::Schema.define(version: 2021_07_02_071942) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.text "profile"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "students"
+  add_foreign_key "comments", "users"
+  add_foreign_key "likes", "students"
+  add_foreign_key "likes", "users"
 end

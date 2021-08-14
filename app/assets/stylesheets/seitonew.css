@@ -1,0 +1,23 @@
+h3{
+    font-size: 30px;
+    text-align:center;
+}
+
+newbody{
+background-image: url("/images/bharath-g-s-aLGiPJ4XRO4-unsplash.jpg");
+background-size: cover;
+width: 100%;
+height: auto;
+padding-top: 13.3%;
+
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.field-new{
+background-color: #ffffffbb;
+    color: #494949;
+    margin: 2em 0;
+    padding: 2em;
+}

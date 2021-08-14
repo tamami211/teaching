@@ -1,0 +1,40 @@
+// Place all the styles related to the tweets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+* {
+    padding: 0;
+    margin: 0;
+  }
+  body {
+    font-family: "Mukta Malar";
+  }
+
+  post-container {
+    margin: 50px auto;
+    width: 50%;
+    border: solid #d3def1;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #d3def1;
+  }
+
+  .first-block {
+    height: 500px;
+    background-color: #ddd;
+  }
+  
+  .second-block {
+    height: 500px;
+    background-color: #f0f0f0;
+  }
+  
+  .third-block {
+    height: 500px;
+    background-color: #f05f40;
+  }
+
+  .fourth-block {
+    height: 500px;
+    background-color: #E9E9E9;
+  }
+  

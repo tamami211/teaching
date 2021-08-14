@@ -1,0 +1,85 @@
+.profilepage {
+    border: 1px solid #ef858c;	/* 線の太さ・種類・色 */
+	border-radius: 5px;
+	padding: 45px 10px 10px 10px;	/* 内側の余白 上・右・左・下 */
+	position: relative;
+	z-index: 0;
+    display: inline-block;
+    width: 400px;
+  }
+  
+  .profilepage:before{
+	background-color: #efd385;	/* タイトル部分背景色 */
+	border-radius: 5px 5px 0px 0px;
+	color: #fff;	/* タイトル部分文字色 */
+	content: 'プロフィール';
+	height: 25px;	/* タイトル部分高さ */
+	padding: 5px 10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 2;
+}
+.profilepage:after {
+	border-style: solid;
+	border-width: 10px 10px 0 10px;
+	border-color: #efd385; transparent transparent transparent;	/* 吹き出し三角部分の色 */
+	content: "";
+	position: absolute;
+	top: 35px;
+	left: 10px;
+	width: 0px;
+	height: 0px;
+	z-index: 1;
+}
+
+  .profile__name {
+    color: #363636;
+    padding:1.6rem 0 .2rem;
+    font-weight:bold;
+    font-size:1.2rem;
+    letter-spacing:.1rem;
+  }
+
+  .profile__desc {
+    color: #363636;
+    line-height:1.6rem;
+  }
+
+  .userindex {
+    border: 1px solid #ef858c;	/* 線の太さ・種類・色 */
+	border-radius: 5px;
+    margin-top: 20px;
+	padding: 45px 10px 10px 10px;	/* 内側の余白 上・右・左・下 */
+	position: relative;
+	z-index: 0;
+    display: inline-block;
+  }
+  
+  .userindex:before{
+	background-color: #efd385;	/* タイトル部分背景色 */
+	border-radius: 5px 5px 0px 0px;
+	color: #fff;	/* タイトル部分文字色 */
+	content: '投稿した生徒の一覧';
+	height: 25px;	/* タイトル部分高さ */
+    padding: 5px 10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 2;
+}
+.userindex:after {
+	border-style: solid;
+	border-width: 10px 10px 0 10px;
+	border-color: #efd385; transparent transparent transparent;	/* 吹き出し三角部分の色 */
+	content: "";
+	position: absolute;
+	top: 35px;
+	left: 10px;
+	width: 0px;
+	height: 0px;
+	z-index: 1;
+}
+
